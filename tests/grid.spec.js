@@ -17,5 +17,4 @@ test('grid check all items', async ({page}) => {
 
     await page.goto('/grid');
     await gridPage.getAllItems();
-
 });

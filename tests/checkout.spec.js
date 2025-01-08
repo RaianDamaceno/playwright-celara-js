@@ -3,7 +3,7 @@ import {CheckoutPage} from "../pages/checkoutPage";
 import {validUser} from "../data/testData";
 const { billingDetails, paymentDetails } = require('../data/testData');
 
-test('checkout', async ({page}) => {
+test('Successful Checkout Scenario', async ({page}) => {
     const checkoutPage = new CheckoutPage(page);
     await page.goto('/checkout');
 
@@ -12,17 +12,7 @@ test('checkout', async ({page}) => {
     expect(checkCheckoutSuccessMsg).toBe('Order Confirmed!');
 });
 
-test('checkout 2', async ({page}) => {
-    const checkoutPage = new CheckoutPage(page);
-    await page.goto('/checkout');
-
-    await checkoutPage.completeCheckout(billingDetails, paymentDetails, false)
-    page.on('dialog', async dialog => {
-        expect(dialog.message()).toBe('Shipping address same as billing checkbox must be selected.');
-    });
-});
-
-test('price', async ({page}) => {
+test('Checkout scenario without checking at the shipping address checkbox', async ({page}) => {
     const checkoutPage = new CheckoutPage(page);
     await page.goto('/checkout');
 

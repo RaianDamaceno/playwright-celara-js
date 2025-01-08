@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test';
 const {LoginPage} = require('../pages/loginPage')
 const { validUser, urls, invalidUser } = require('../data/testData');
 
-test('login.spec.js', async ({page}) => {
+test('Successful login scenario.', async ({page}) => {
     const loginPage = new LoginPage(page);
     await page.goto('/login');
     await loginPage.login(validUser.username, validUser.password);
@@ -13,7 +13,7 @@ test('login.spec.js', async ({page}) => {
     expect(welcomeUsernameText).toBe(validUser.username);
 });
 
-test('login.spec.js3', async ({page}) => {
+test('Invalid login scenario.', async ({page}) => {
     const loginPage = new LoginPage(page);
     await page.goto('/login');
     await loginPage.login(invalidUser.username, invalidUser.password);
@@ -21,7 +21,7 @@ test('login.spec.js3', async ({page}) => {
     await loginPage.checkErrorMessage('Wrong credentials')
 });
 
-test('login.spec.js311', async ({page}) => {
+test('Login scenario without sending parameters.', async ({page}) => {
     const loginPage = new LoginPage(page);
     await page.goto('/login');
     await loginPage.login('', '');

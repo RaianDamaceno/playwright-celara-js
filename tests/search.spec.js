@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test';
 import {SearchPage} from "../pages/searchPage";
 
-test('search', async ({page}) => {
+test('Successful search scenario.', async ({page}) => {
     const searchPage = new SearchPage(page);
     await page.goto('/search');
 
@@ -11,7 +11,7 @@ test('search', async ({page}) => {
     expect(resultText).toBe('Found one result for Pepperoni');
 });
 
-test('search 2', async ({page}) => {
+test('Search scenario without sending parameters.', async ({page}) => {
     const searchPage = new SearchPage(page);
     await page.goto('/search');
 
