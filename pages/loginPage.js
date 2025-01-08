@@ -35,6 +35,8 @@ class LoginPage {
     }
 
     async checkErrorMessage(expectedText) {
+        const element = this.page.locator(`text=${expectedText}`);
+        await element.waitFor({ state: 'visible' });
         const actualErrorMsg = await this.errorMsg.textContent();
         expect(actualErrorMsg.trim()).toBe(expectedText);
     }
