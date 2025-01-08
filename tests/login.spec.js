@@ -24,7 +24,7 @@ test('login.spec.js3', async ({page}) => {
 test('login.spec.js311', async ({page}) => {
     const loginPage = new LoginPage(page);
     await page.goto('/login');
-    await loginPage.login(invalidUser.username, invalidUser.password);
+    await loginPage.login('', '');
 
     await loginPage.checkErrorMessage('Fields can not be empty')
 });
